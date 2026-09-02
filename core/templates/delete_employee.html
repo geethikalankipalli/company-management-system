@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Delete Employee</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>IT Company</h2>
+
+    <a href="/">Dashboard</a>
+    <a href="/employees/" class="active">Employees</a>
+    <a href="#">Projects</a>
+    <a href="#">Tasks</a>
+    <a href="#">Departments</a>
+    <a href="#">Reports</a>
+</div>
+
+<main class="content">
+
+    <div class="topbar">
+        <div>
+            <h1>Delete Employee</h1>
+            <p>Remove an employee from the company database</p>
+        </div>
+    </div>
+
+    <div class="employee-container">
+
+        <h2>Confirm Delete</h2>
+
+        <p>
+            Are you sure you want to delete
+            <strong>{{ employee.name }}</strong>?
+        </p>
+
+        <br>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <button type="submit" class="delete-btn">
+                Yes, Delete
+            </button>
+
+            <a href="/employees/" class="cancel-btn">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</main>
+
+</body>
+</html>

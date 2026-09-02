@@ -1,0 +1,172 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>IT Company</h2>
+
+    <a href="/">Dashboard</a>
+    <a href="/employees/">Employees</a>
+    <a href="/projects/" class="active">Projects</a>
+    <a href="{% url 'tasks' %}">Tasks</a>
+    <a href="{% url 'departments' %}">Departments</a>
+    <a href="{% url 'reports' %}">Reports</a>
+</div>
+
+<main class="content">
+
+    <div class="topbar">
+        <div>
+            <h1>Projects</h1>
+            <p>Manage company projects</p>
+        </div>
+        <a href="{% url 'add_project' %}" class="add-btn">
+                + Add Project
+        </a>
+        
+    </div>
+
+    <div class="employee-container">
+
+        <div class="project-header">
+            <h2>Project List</h2>
+
+           
+        </div>
+
+        <table class="employee-table">
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for project in projects %}
+
+                <tr>
+                    <td>
+                        <strong>{{ project.name }}</strong>
+                    </td>
+
+                    <td>
+                        {{ project.description }}
+                    </td>
+
+                    <td>
+                        {{ project.start_date }}
+                    </td>
+
+                    <td>
+                      
+
+                        {% if project.end_date %}
+
+                            {% if project.end_date < today %}
+
+                                <span class="overdue-badge">
+                                    Overdue
+                                </span>
+
+                            {% else %}
+
+                                {{ project.end_date }}
+
+                            {% endif %}
+
+                        {% else %}
+
+                            <span class="not-set">
+                                Not set
+                            </span>
+
+                        {% endif %}
+
+
+                    </td>
+
+                    <td>
+                      
+
+                            {% if project.status|lower == "pending" %}
+
+                                <span class="status-badge pending">
+                                    Pending
+                                </span>
+
+                            {% elif project.status|lower == "in progress" %}
+
+                                <span class="status-badge progress">
+                                    In Progress
+                                </span>
+
+                            {% elif project.status|lower == "completed" %}
+
+                                <span class="status-badge completed">
+                                    Completed
+                                </span>
+
+                            {% else %}
+
+                                <span class="status-badge">
+                                    {{ project.status }}
+                                </span>
+
+                            {% endif %}
+
+
+                    </td>
+
+                    <td>
+                        <a href="{% url 'edit_project' project.id %}"
+                           class="edit-btn">
+                            Edit
+                        </a>
+
+                        <a href="{% url 'delete_project' project.id %}"
+                           class="delete-btn">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="6">
+                        No projects found.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</main>
+
+</body>
+</html>
+```

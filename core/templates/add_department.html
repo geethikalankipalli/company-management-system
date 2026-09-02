@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Add Department</title>
+
+<link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+
+<h2>IT Company</h2>
+
+<a href="/">
+    Dashboard
+</a>
+
+<a href="{% url 'employees' %}">
+    Employees
+</a>
+
+<a href="{% url 'projects' %}">
+    Projects
+</a>
+
+<a href="{% url 'tasks' %}">
+    Tasks
+</a>
+
+<a href="{% url 'departments' %}" class="active">
+    Departments
+</a>
+
+<a href="#">
+    Reports
+</a>
+
+
+</div>
+
+<main class="content">
+
+```
+<div class="topbar">
+
+    <div>
+        <h1>Add Department</h1>
+        <p>Create a new company department</p>
+    </div>
+
+    <div class="profile">
+        Admin
+    </div>
+
+</div>
+
+
+<div class="employee-container">
+
+    <h2>Department Details</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="save-btn">
+            Save Department
+        </button>
+
+        <a href="{% url 'departments' %}" class="cancel-btn">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Departments</title>
+
+<link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+
+<h2>IT Company</h2>
+
+<a href="/">
+    Dashboard
+</a>
+
+<a href="{% url 'employees' %}">
+    Employees
+</a>
+
+<a href="{% url 'projects' %}">
+    Projects
+</a>
+
+<a href="{% url 'tasks' %}">
+    Tasks
+</a>
+
+<a href="{% url 'departments' %}" class="active">
+    Departments
+</a>
+
+<a href="{% url 'reports' %}">
+    Reports
+</a>
+
+
+</div>
+
+<main class="content">
+
+
+<div class="topbar">
+
+    <div>
+        <h1>Departments</h1>
+        <p>Manage company departments</p>
+    </div>
+
+    <div>
+        <a href="{% url 'add_department' %}" class="add-btn">
+            + Add Department
+        </a>
+    </div>
+
+</div>
+
+
+<div class="employee-container">
+
+    <div class="department-summary">
+
+        <h2>Department List</h2>
+
+        <div class="department-count">
+
+            <span>Total Departments</span>
+
+            <strong>
+                {{ departments|length }}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <table class="department-table">
+
+        <thead>
+
+            <tr>
+                <th>Department</th>
+                <th>Description</th>
+                <th>Employees</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            {% for department in departments %}
+
+            <tr>
+
+                <!-- Department -->
+
+                <td>
+                    <strong class="department-name">
+                        🏢 {{ department.name }}
+                    </strong>
+                </td>
+
+
+                <!-- Description -->
+
+                <td>
+                    {{ department.description|default:"No description" }}
+                </td>
+
+
+                <!-- Employee Count -->
+
+                <td>
+                    <span class="employee-count-badge">
+                        {{ department.employee_count }} Employees
+                    </span>
+                </td>
+
+
+                <!-- Actions -->
+
+                <td>
+
+                    <a href="{% url 'edit_department' department.id %}"
+                       class="edit-btn">
+                        Edit
+                    </a>
+
+                    <a href="{% url 'delete_department' department.id %}"
+                       class="delete-btn">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="4">
+                    No departments found.
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Delete Department</title>
+
+<link rel="stylesheet" href="{% static 'core/style.css' %}">
+```
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+```
+<h2>IT Company</h2>
+
+<a href="/">
+    Dashboard
+</a>
+
+<a href="{% url 'employees' %}">
+    Employees
+</a>
+
+<a href="{% url 'projects' %}">
+    Projects
+</a>
+
+<a href="{% url 'tasks' %}">
+    Tasks
+</a>
+
+<a href="{% url 'departments' %}" class="active">
+    Departments
+</a>
+
+<a href="#">
+    Reports
+</a>
+```
+
+</div>
+
+<main class="content">
+
+```
+<div class="topbar">
+
+    <div>
+        <h1>Delete Department</h1>
+        <p>Remove a department from your company</p>
+    </div>
+
+    <div class="profile">
+        Admin
+    </div>
+
+</div>
+
+
+<div class="employee-container">
+
+    <h2>Confirm Delete</h2>
+
+    <p>
+        Are you sure you want to delete
+        <strong>{{ department.name }}</strong>?
+    </p>
+
+    <p>
+        This action cannot be undone.
+    </p>
+
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <button type="submit" class="delete-btn">
+            Delete Department
+        </button>
+
+        <a href="{% url 'departments' %}" class="cancel-btn">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
+```
+
+</main>
+
+</body>
+</html>

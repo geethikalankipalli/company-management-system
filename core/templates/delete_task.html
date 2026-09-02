@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Delete Task</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>IT Company</h2>
+
+    <a href="/">Dashboard</a>
+    <a href="/employees/">Employees</a>
+    <a href="/projects/">Projects</a>
+    <a href="/tasks/" class="active">Tasks</a>
+    <a href="#">Departments</a>
+    <a href="#">Reports</a>
+</div>
+
+<main class="content">
+
+    <div class="topbar">
+        <div>
+            <h1>Delete Task</h1>
+            <p>Confirm task deletion</p>
+        </div>
+    </div>
+
+    <div class="employee-container">
+
+        <h2>Delete Task</h2>
+
+        <p>
+            Are you sure you want to delete
+            <strong>{{ task.title }}</strong>?
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <button type="submit" class="delete-btn">
+                Yes, Delete
+            </button>
+
+            <a href="{% url 'tasks' %}" class="cancel-btn">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Task</title>
+
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>IT Company</h2>
+
+    <a href="/">Dashboard</a>
+    <a href="/employees/">Employees</a>
+    <a href="/projects/">Projects</a>
+    <a href="/tasks/" class="active">Tasks</a>
+    <a href="#">Departments</a>
+    <a href="#">Reports</a>
+</div>
+
+<main class="content">
+
+    <div class="topbar">
+        <div>
+            <h1>Edit Task</h1>
+            <p>Update task details</p>
+        </div>
+    </div>
+
+    <div class="employee-container">
+
+        <h2>Task Details</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="update-btn">
+                Update Task
+            </button>
+
+            <a href="{% url 'tasks' %}" class="cancel-btn">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</main>
+
+</body>
+</html>

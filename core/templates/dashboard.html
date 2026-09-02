@@ -1,0 +1,179 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>IT Company Management</title>
+
+<link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>IT Company</h2>
+
+<a href="/" class="active">
+    Dashboard
+</a>
+
+<a href="{% url 'employees' %}">
+    Employees
+</a>
+
+<a href="{% url 'projects' %}">
+    Projects
+</a>
+
+<a href="{% url 'tasks' %}">
+    Tasks
+</a>
+
+<a href="{% url 'departments' %}">
+    Departments
+</a>
+
+<a href="{% url 'reports' %}">
+    Reports
+</a>
+
+
+</div>
+
+<main class="content">
+
+
+<div class="topbar">
+
+    <div>
+        <h1>Dashboard</h1>
+        <p>Welcome to your company management system</p>
+    </div>
+
+    <a href="admin" class="profile">
+        Admin
+    </a>
+</div>
+
+
+<div class="cards">
+
+    <!-- Employees -->
+
+    <a href="{% url 'employees' %}" class="card employee-card">
+
+        <h3>Employees</h3>
+
+        <p>{{ employee_count }}</p>
+
+        <span>Total employees</span>
+
+    </a>
+
+
+    <!-- Projects -->
+
+    <a href="{% url 'projects' %}" class="card project-card">
+
+        <h3>Projects</h3>
+
+        <p>{{ project_count }}</p>
+
+        <span>Active projects</span>
+
+    </a>
+
+
+    <!-- Tasks -->
+
+    <a href="{% url 'tasks' %}" class="card task-card">
+
+        <h3>Tasks</h3>
+
+        <p>{{ task_count }}</p>
+
+        <span>Total tasks</span>
+
+    </a>
+
+
+    <!-- Pending Tasks -->
+
+    <a href="{% url 'tasks' %}" class="card pending-task-card">
+
+        <h3>Pending Tasks</h3>
+
+        <p>{{ pending_task_count }}</p>
+
+        <span>Needs attention</span>
+
+    </a>
+
+
+    <!-- Departments -->
+
+    <a href="{% url 'departments' %}" class="card department-card">
+
+        <h3>Departments</h3>
+
+        <p>{{ department_count }}</p>
+
+        <span>Total departments</span>
+
+    </a>
+
+</div>
+
+
+<div class="welcome-box">
+
+
+<h2>Company Overview</h2>
+
+<p>
+    Manage employees, projects, tasks and departments
+    from one centralized dashboard.
+</p>
+
+<div class="project-overview">
+
+    <h3>Project Status Overview</h3>
+
+    <div class="status-summary">
+
+        <div class="summary-item pending-summary">
+            <span>🟡 Pending</span>
+            <strong>{{ pending_project_count }}</strong>
+        </div>
+
+        <div class="summary-item progress-summary">
+            <span>🔵 In Progress</span>
+            <strong>{{ in_progress_project_count }}</strong>
+        </div>
+
+        <div class="summary-item completed-summary">
+            <span>🟢 Completed</span>
+            <strong>{{ completed_project_count }}</strong>
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+</main>
+
+</body>
+</html>

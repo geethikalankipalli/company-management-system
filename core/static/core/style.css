@@ -1,0 +1,741 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1f2937;
+}
+
+.sidebar {
+    position: fixed;
+    width: 240px;
+    height: 100vh;
+    background: #111827;
+    padding: 25px 15px;
+}
+
+.sidebar h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar a {
+    display: block;
+    color: #d1d5db;
+    text-decoration: none;
+    padding: 13px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #2563eb;
+    color: white;
+}
+
+.content {
+    margin-left: 240px;
+    padding: 35px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.topbar h1 {
+    font-size: 32px;
+}
+
+.topbar p {
+    color: #6b7280;
+    margin-top: 5px;
+}
+
+.profile {
+    background: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.card h3 {
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.card span {
+    color: #9ca3af;
+}
+
+.welcome-box {
+    margin-top: 30px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.welcome-box h2 {
+    margin-bottom: 10px;
+}
+
+/* Employee Page */
+
+.employee-container {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+}
+
+.employee-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 1000px;
+}
+
+.employee-table th,
+.employee-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #eeeeee;
+    white-space: nowrap;
+}
+
+.employee-table th {
+    background: #f8f9fc;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.employee-table td {
+    font-size: 14px;
+}
+
+.employee-table tr:hover {
+    background: #fafafa;
+}
+
+/* Add Employee Form */
+
+.employee-container form {
+    max-width: 700px;
+}
+
+.employee-container form p {
+    margin-bottom: 18px;
+}
+
+.employee-container form label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.employee-container form input,
+.employee-container form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.employee-container form input:focus,
+.employee-container form select:focus {
+    border-color: #2563eb;
+}
+
+.cancel-btn {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #374151;
+    background: #e5e7eb;
+    font-weight: 600;
+}
+
+.edit-btn {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.edit-btn:hover {
+    opacity: 0.85;
+}
+
+.delete-btn {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #dc2626;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    opacity: 0.85;
+}
+
+.employee-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.employee-card:hover {
+    transform: translateY(-3px);
+}
+
+.project-card,
+.project-card:hover,
+.project-card:visited,
+.project-card:active {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Project Form Buttons */
+
+.save-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.save-btn:hover {
+    background: #1d4ed8;
+}
+
+.cancel-btn {
+    display: inline-block;
+    background: #e5e7eb;
+    color: #374151;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cancel-btn:hover {
+    background: #d1d5db;
+
+}
+
+.save-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.save-btn:hover {
+    background: #1d4ed8;
+}
+
+.cancel-btn {
+    display: inline-block;
+    background: #e5e7eb;
+    color: #374151;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cancel-btn:hover {
+    background: #d1d5db;
+}
+
+/* Project Form Buttons */
+
+.save-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.save-btn:hover {
+    background: #1d4ed8;
+}
+
+.update-btn {
+    display: inline-block;
+    background: #16a34a;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.update-btn:hover {
+    background: #15803d;
+}
+
+.cancel-btn {
+    display: inline-block;
+    background: #e5e7eb;
+    color: #374151;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cancel-btn:hover {
+    background: #d1d5db;
+}
+
+/* Dashboard clickable cards */
+
+.cards a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.cards a:hover,
+.cards a:visited,
+.cards a:active,
+.cards a:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+.cards a h3,
+.cards a p,
+.cards a span {
+    text-decoration: none;
+}
+/* Departments Page */
+
+.department-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.department-table th,
+.department-table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.department-table th {
+    background: #f8f9fc;
+    color: #374151;
+    font-size: 14px;
+}
+
+.department-table td {
+    font-size: 15px;
+}
+
+.department-table tr:hover {
+    background: #fafafa;
+}
+
+/* Department Summary */
+
+.department-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.department-count {
+    background: #f8f9fc;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.department-count span {
+    display: block;
+    color: #6b7280;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.department-count strong {
+    font-size: 24px;
+    color: #2563eb;
+}
+/* Department Employee Badge */
+
+.employee-count-badge {
+    display: inline-block;
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+.department-name {
+    font-size: 16px;
+    color: #1f2937;
+}
+/* Task Status Badges */
+
+.status-badge {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.status-badge.pending {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.status-badge.progress {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.status-badge.completed {
+    background-color: #dcfce7;
+    color: #166534;
+}
+/* Task Due Date */
+
+.overdue-badge {
+    display: inline-block;
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.not-set {
+    color: #9ca3af;
+    font-style: italic;
+}
+/* Project Status Overview */
+
+.project-overview {
+    margin-top: 25px;
+}
+
+.project-overview h3 {
+    margin-bottom: 15px;
+}
+
+.status-summary {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.summary-item {
+    flex: 1;
+    min-width: 180px;
+    padding: 18px;
+    border-radius: 10px;
+    background: #f8f9fc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-item span {
+    font-weight: 600;
+}
+
+.summary-item strong {
+    font-size: 24px;
+}
+
+.pending-summary {
+    border-left: 5px solid #f59e0b;
+}
+
+.progress-summary {
+    border-left: 5px solid #3b82f6;
+}
+
+.completed-summary {
+    border-left: 5px solid #22c55e;
+}
+
+
+/* ================================
+   REPORTS PAGE
+================================ */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid #14532d;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card h3 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #666;
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 32px;
+    color: #14532d;
+}
+
+
+/* Department Report Table */
+
+.employee-container h2 {
+    margin-bottom: 20px;
+}
+
+.department-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.department-table th {
+    background: #14532d;
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+.department-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.department-table tr:last-child td {
+    border-bottom: none;
+}
+
+.employee-count-badge {
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 20px;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 1000px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* Form Validation Errors */
+
+.errorlist {
+    list-style: none;
+    margin: 6px 0 10px;
+    padding: 0;
+    color: #dc2626;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.errorlist li {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+/* Employee Form Fields */
+
+.employee-container form input,
+.employee-container form select,
+.employee-container form textarea {
+    width: 100%;
+    padding: 11px 14px;
+    margin-top: 6px;
+    margin-bottom: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.employee-container form input:focus,
+.employee-container form select:focus,
+.employee-container form textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Invalid Phone Field */
+
+.employee-container form input:invalid {
+    border-color: #dc2626;
+}
+
+/* Employee Form Styling */
+
+.employee-container form input,
+.employee-container form select,
+.employee-container form textarea {
+    width: 100%;
+    padding: 11px 14px;
+    margin-top: 6px;
+    margin-bottom: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+    background: white;
+}
+
+.employee-container form input:focus,
+.employee-container form select:focus,
+.employee-container form textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+/* Employee Form Buttons */
+
+.employee-container form .add-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.employee-container form .add-btn:hover {
+    background: #1d4ed8;
+}

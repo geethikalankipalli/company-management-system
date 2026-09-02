@@ -1,0 +1,202 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tasks</title>
+
+<link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>IT Company</h2>
+
+<a href="/">
+    Dashboard
+</a>
+
+<a href="{% url 'employees' %}">
+    Employees
+</a>
+
+<a href="{% url 'projects' %}">
+    Projects
+</a>
+
+<a href="{% url 'tasks' %}" class="active">
+    Tasks
+</a>
+
+<a href="{% url 'departments' %}">
+    Departments
+</a>
+
+<a href="{% url 'reports' %}">
+    Reports
+</a>
+
+</div>
+
+<main class="content">
+
+<div class="topbar">
+
+    <div>
+        <h1>Tasks</h1>
+        <p>Manage project tasks</p>
+    </div>
+
+    <div>
+        <a href="{% url 'add_task' %}" class="add-btn">
+            + Add Task
+        </a>
+    </div>
+
+</div>
+
+
+<div class="employee-container">
+
+    <div class="project-header">
+        <h2>Task List</h2>
+    </div>
+
+
+    <table class="employee-table">
+
+        <thead>
+
+            <tr>
+                <th>Title</th>
+                <th>Project</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Due Date</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            {% for task in tasks %}
+
+            <tr>
+
+                <td>
+                    <strong>{{ task.title }}</strong>
+                </td>
+
+                <td>
+                    {{ task.project.name }}
+                </td>
+
+                <td>
+                    {{ task.description }}
+                </td>
+
+                <td>
+
+                    {% if task.status == "Pending" %}
+
+                        <span class="status-badge pending">
+                            Pending
+                        </span>
+
+                    {% elif task.status == "In Progress" %}
+
+                        <span class="status-badge progress">
+                            In Progress
+                        </span>
+
+                    {% elif task.status == "Completed" %}
+
+                        <span class="status-badge completed">
+                            Completed
+                        </span>
+
+                    {% else %}
+
+                        <span class="status-badge">
+                            {{ task.status }}
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+
+                <td>
+
+                    {% if task.due_date %}
+
+                        {% if task.due_date < today %}
+
+                            <span class="overdue-badge">
+                                Overdue
+                            </span>
+
+                        {% else %}
+
+                            {{ task.due_date }}
+
+                        {% endif %}
+
+                    {% else %}
+
+                        <span class="not-set">
+                            Not set
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+
+                <td>
+
+                    <a href="{% url 'edit_task' task.id %}" class="edit-btn">
+                        Edit
+                    </a>
+
+                    <a href="{% url 'delete_task' task.id %}" class="delete-btn">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="6">
+                    No tasks found.
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</main>
+
+</body>
+</html>

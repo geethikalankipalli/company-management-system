@@ -1,0 +1,154 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Reports</title>
+
+<link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2>IT Company</h2>
+
+<a href="/">
+    Dashboard
+</a>
+
+<a href="{% url 'employees' %}">
+    Employees
+</a>
+
+<a href="{% url 'projects' %}">
+    Projects
+</a>
+
+<a href="{% url 'tasks' %}">
+    Tasks
+</a>
+
+<a href="{% url 'departments' %}">
+    Departments
+</a>
+
+<a href="{% url 'reports' %}" class="active">
+    Reports
+</a>
+```
+
+</div>
+
+<main class="content">
+
+
+<div class="topbar">
+
+    <div>
+        <h1>Reports</h1>
+        <p>Company overview and statistics</p>
+    </div>
+
+</div>
+
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <h3>Total Employees</h3>
+        <strong>{{ employee_count }}</strong>
+    </div>
+
+    <div class="stat-card">
+        <h3>Total Departments</h3>
+        <strong>{{ department_count }}</strong>
+    </div>
+
+    <div class="stat-card">
+        <h3>Total Projects</h3>
+        <strong>{{ project_count }}</strong>
+    </div>
+
+    <div class="stat-card">
+        <h3>Total Tasks</h3>
+        <strong>{{ task_count }}</strong>
+    </div>
+
+    <div class="stat-card">
+        <h3>Completed Projects</h3>
+        <strong>{{ completed_projects }}</strong>
+    </div>
+
+    <div class="stat-card">
+        <h3>Pending Projects</h3>
+        <strong>{{ pending_projects }}</strong>
+    </div>
+
+    <div class="stat-card">
+        <h3>Pending Tasks</h3>
+        <strong>{{ pending_tasks }}</strong>
+    </div>
+
+</div>
+
+
+<div class="employee-container">
+
+    <h2>Employees by Department</h2>
+
+    <table class="department-table">
+
+        <thead>
+            <tr>
+                <th>Department</th>
+                <th>Employees</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for department in department_data %}
+
+            <tr>
+
+                <td>
+                    🏢 {{ department.name }}
+                </td>
+
+                <td>
+                    <span class="employee-count-badge">
+                        {{ department.employee_count }} Employees
+                    </span>
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="2">
+                    No department data available.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</main>
+
+</body>
+</html>
