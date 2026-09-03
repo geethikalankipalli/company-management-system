@@ -34,6 +34,9 @@ ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 if "RENDER_EXTERNAL_HOSTNAME" in os.environ:
     ALLOWED_HOSTS.append(os.environ["RENDER_EXTERNAL_HOSTNAME"])
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://company-management-system-jm7v.onrender.com",
+]
 
 # Application definition
 
