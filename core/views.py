@@ -3,6 +3,7 @@ from.models import Employee, Project, Task, Department
 from .forms import EmployeeForm, ProjectForm, TaskForm, DepartmentForm
 from django.db.models import Count
 from datetime import date
+from django.contrib.auth.decorators import login_required
 
 def dashboard(request):
 
@@ -42,7 +43,7 @@ def employees(request):
     employees = Employee.objects.all()
     return render(request, 'employees.html', {'employees': employees})
 
-
+@login_required
 def add_employee(request):
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
@@ -55,6 +56,8 @@ def add_employee(request):
 
     return render(request, 'add_employee.html', {'form': form})
 
+
+@login_required
 def edit_employee(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
 
@@ -69,6 +72,7 @@ def edit_employee(request, employee_id):
 
     return render(request, 'edit_employee.html', {'form': form})
 
+@login_required
 def delete_employee(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
 
@@ -89,6 +93,7 @@ def projects(request):
         'today': date.today()
     })
     
+@login_required    
 def add_project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST)
@@ -101,6 +106,7 @@ def add_project(request):
 
     return render(request, 'add_project.html', {'form': form})
 
+@login_required
 def edit_Project(request, project_id):
     project = Project.objects.get(id=project_id)
 
@@ -115,6 +121,7 @@ def edit_Project(request, project_id):
 
     return render(request, 'edit_project.html', {'form': form})
 
+@login_required
 def delete_project(request, project_id):
     project = Project.objects.get(id=project_id)
 
@@ -131,6 +138,8 @@ def tasks(request):
     task_list = Task.objects.all()
 
     return render(request, 'tasks.html',{'tasks': task_list, 'today': date.today()})
+
+@login_required
 def add_task(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
@@ -145,6 +154,8 @@ def add_task(request):
     return render(request, 'add_task.html', {
         'form': form
     })
+    
+@login_required
 def edit_task(request, task_id):
     task = Task.objects.get(id=task_id)
 
@@ -158,6 +169,8 @@ def edit_task(request, task_id):
         form = TaskForm(instance=task)
 
     return render(request, 'edit_task.html', {'form': form})
+
+@login_required
 def delete_task(request, task_id):
     task = Task.objects.get(id=task_id)
 
@@ -175,6 +188,8 @@ def departments(request):
     return render(request, 'department.html', {
         'departments': departments
     })
+    
+@login_required
 def add_department(request):
 
     if request.method == 'POST':
@@ -193,6 +208,7 @@ def add_department(request):
         'form': form
     })
     
+@login_required
 def add_department(request):
 
     if request.method == 'POST':
@@ -211,7 +227,7 @@ def add_department(request):
         'form': form
     })
 
-
+@login_required
 def edit_department(request, department_id):
 
     department = get_object_or_404(Department, id=department_id)
@@ -232,6 +248,8 @@ def edit_department(request, department_id):
         'form': form,
         'department': department
     })
+
+@login_required
 def delete_department(request, department_id):
 
     department = get_object_or_404(Department, id=department_id)
